@@ -169,14 +169,14 @@ def compute_failure_probabilities_dev(
     ]
 
 
-type Coords2D = tuple[int, int]
-type Edge = tuple[Coords2D, Coords2D]
-type MatrixAndMaps = tuple[
+Coords2D = tuple[int, int]
+Edge = tuple[Coords2D, Coords2D]
+MatrixAndMaps = tuple[
     npt.NDArray[np.int64],
     dict[Coords2D, int],
     dict[Edge, int],
 ]
-type Conditions = list[Callable[[int, int], tuple[bool, list[Edge]]]]
+Conditions = list[Callable[[int, int], tuple[bool, list[Edge]]]]
 
 
 def generate_qubit_edge_matrix_with_unknowns_can(
