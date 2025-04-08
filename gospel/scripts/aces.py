@@ -522,7 +522,7 @@ def cli(
     shots: int = 10,
     ncircuits: int = 10,
     verbose: bool = False,
-    method: Method = Method.Stim,
+    method: Method | None = None,
     walltime: int | None = None,
     memory: int | None = None,
     cores: int | None = None,
@@ -541,6 +541,10 @@ def cli(
     dask_client = dask.distributed.Client(cluster)  # type: ignore[no-untyped-call]
 
     node = nqubits * ((4 * nlayers) + 1)
+
+    # typer seems not to support default values for Enum
+    if method is None:
+        method = Method.Stim
 
     logger.info("Starting simulations...")
     start = time.time()
